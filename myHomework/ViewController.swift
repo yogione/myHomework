@@ -13,12 +13,10 @@ import EventKit
 class ViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-    var homeworks: [NSManagedObject] = []
-    
-  //  var homeworkArray = [Homework]()
-    
     var managedContext :NSManagedObjectContext!
+    
+   // var homeworks: [NSManagedObject] = []
+    var homeworkArray = [Homework]()
 
     @IBOutlet var homeworkTableView :UITableView!
     
@@ -28,7 +26,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueEditTask" {
             let indexPath = homeworkTableView.indexPathForSelectedRow!
-            let currentHomework = homeworks[indexPath.row]
+            let currentHomework = homeworkArray[indexPath.row]
             let destVC = segue.destination as! DetailViewController
             destVC.currentHomework = currentHomework
             homeworkTableView.deselectRow(at: indexPath, animated: true)
@@ -58,13 +56,13 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return homeworks.count
+    return homeworkArray.count
 }
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     // let currentContact = contactArray[indexPath.row]
-    let currentHomework = homeworks[indexPath.row]
+    let currentHomework = homeworkArray[indexPath.row]
     print("\(currentHomework)")
 
   //  cell.textLabel!.text = currentContact.lastName! + ", " + currentContact.firstName!
@@ -78,11 +76,11 @@ func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> B
 
 func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-        let homeworkToDelete = homeworks[indexPath.row]
+        let homeworkToDelete = homeworkArray[indexPath.row]
         managedContext.delete(homeworkToDelete)
         appDelegate.saveContext()
        // contactArray = appDelegate.fetchAllContacts()
-        homeworks = appDelegate.fetchAllHomeWorks()
+        homeworkArray = appDelegate.fetchAllHomeWorks()
         homeworkTableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.isEditing = false
     }

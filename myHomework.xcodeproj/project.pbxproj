@@ -14,6 +14,7 @@
 		164617B41E8DF8B800DE5AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164617B31E8DF8B800DE5AAC /* Assets.xcassets */; };
 		164617B71E8DF8B800DE5AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 164617B51E8DF8B800DE5AAC /* LaunchScreen.storyboard */; };
 		164617C31E90855300DE5AAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164617C21E90855300DE5AAC /* DetailViewController.swift */; };
+		164617C51E90B42300DE5AAC /* HomeworksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164617C41E90B42300DE5AAC /* HomeworksTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		164617B61E8DF8B800DE5AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		164617B81E8DF8B800DE5AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		164617C21E90855300DE5AAC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		164617C41E90B42300DE5AAC /* HomeworksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworksTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				164617AB1E8DF8B800DE5AAC /* ViewController.swift */,
 				164617C21E90855300DE5AAC /* DetailViewController.swift */,
 				164617AD1E8DF8B800DE5AAC /* Main.storyboard */,
+				164617C41E90B42300DE5AAC /* HomeworksTableViewCell.swift */,
 				164617B31E8DF8B800DE5AAC /* Assets.xcassets */,
 				164617B51E8DF8B800DE5AAC /* LaunchScreen.storyboard */,
 				164617B81E8DF8B800DE5AAC /* Info.plist */,
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164617C51E90B42300DE5AAC /* HomeworksTableViewCell.swift in Sources */,
 				164617AC1E8DF8B800DE5AAC /* ViewController.swift in Sources */,
 				164617AA1E8DF8B800DE5AAC /* AppDelegate.swift in Sources */,
 				164617B21E8DF8B800DE5AAC /* myHomework.xcdatamodeld in Sources */,

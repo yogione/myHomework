@@ -50,14 +50,42 @@ class DetailViewController: UIViewController {
     
     //MARK: - Interactivity Methods
     
-    @IBAction func savedPressed(button: UIBarButtonItem) {
+    @IBAction func savedPressed(button: UIButton) {
         if let homework = currentHomework {
             editHomework(homework: homework)
         } else {
             createHomework()
         }
-        self.navigationController!.popViewController(animated: true)
+       // self.navigationController!.popViewController(animated: true)
     }
+    
+    //MARK: - Calendar Methods
+    
+    @IBAction func createCalendarItem(button: UIBarButtonItem) {
+        let calEvent = EKEvent(eventStore: eventStore)
+        calEvent.calendar = eventStore.defaultCalendarForNewEvents
+        calEvent.title = homeworkNameTextField.text!
+        calEvent.startDate = dueDateDatePicker.date
+        calEvent.endDate = dueDateDatePicker.date
+        do {
+            try eventStore.save(calEvent, span: .thisEvent, commit: true)
+        } catch let error {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+    
+  /*  @IBAction func findCalendarItems(button: UIBarButtonItem) {
+        let calendars = eventStore.calendars(for: .event)
+        let predicate = eventStore.predicateForEvents(withStart: calStartDatePicker.date, end: calEndDatePicker.date, calendars: calendars)
+        let events = eventStore.events(matching: predicate)
+        if events.count > 0 {
+            for event in events {
+                print("Title: \(event.title) start: \(event.startDate) end: \(event.endDate)")
+            }
+        } else {
+            print("No Events")
+        }
+    } */
     
     //MARK: - Reminder Methods
     

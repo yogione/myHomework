@@ -13,6 +13,7 @@
 		164617B21E8DF8B800DE5AAC /* myHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 164617B01E8DF8B800DE5AAC /* myHomework.xcdatamodeld */; };
 		164617B41E8DF8B800DE5AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164617B31E8DF8B800DE5AAC /* Assets.xcassets */; };
 		164617B71E8DF8B800DE5AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 164617B51E8DF8B800DE5AAC /* LaunchScreen.storyboard */; };
+		164617C31E90855300DE5AAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164617C21E90855300DE5AAC /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		164617B31E8DF8B800DE5AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		164617B61E8DF8B800DE5AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		164617B81E8DF8B800DE5AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		164617C21E90855300DE5AAC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				164617A91E8DF8B800DE5AAC /* AppDelegate.swift */,
 				164617AB1E8DF8B800DE5AAC /* ViewController.swift */,
+				164617C21E90855300DE5AAC /* DetailViewController.swift */,
 				164617AD1E8DF8B800DE5AAC /* Main.storyboard */,
 				164617B31E8DF8B800DE5AAC /* Assets.xcassets */,
 				164617B51E8DF8B800DE5AAC /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				164617AC1E8DF8B800DE5AAC /* ViewController.swift in Sources */,
 				164617AA1E8DF8B800DE5AAC /* AppDelegate.swift in Sources */,
 				164617B21E8DF8B800DE5AAC /* myHomework.xcdatamodeld in Sources */,
+				164617C31E90855300DE5AAC /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

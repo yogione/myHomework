@@ -14,6 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    //MARK: - Core Data Methods
+    
+   func fetchAllHomeWorks() -> [Homework] {
+        let fetchRequest = NSFetchRequest<Homework>(entityName: "Homework")
+        let sortDescriptor1 = NSSortDescriptor(key: "dueDate", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "reminderDate", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        var results = [Homework]()
+        do {
+            results = try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Fetch Error \(error)")
+        }
+        return results
+    }
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

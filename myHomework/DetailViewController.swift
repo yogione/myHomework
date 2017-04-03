@@ -43,7 +43,8 @@ class DetailViewController: UIViewController {
         homework.completionStatus = completionStatusTextField.text
       //  print("in sethomework values fn: \(homework.homeWorkName)")
         
-        createCalendarItem(calTitle: hwdescTextField.text!, startDate: dueDateDatePicker.date as NSDate, endDate: dueDateDatePicker.date as NSDate)
+        createCalendarItem(calTitle: homeworkNameTextField.text!, startDate: dueDateDatePicker.date as NSDate, endDate: dueDateDatePicker.date as NSDate)
+        createReminder(reminderTitle: homeworkNameTextField.text!, reminderDate: reminderDateDatePicker.date as NSDate)
     }
     
     func createHomework() {
@@ -104,12 +105,14 @@ class DetailViewController: UIViewController {
     
     //MARK: - Reminder Methods
     
-    @IBAction func createReminder(button: UIBarButtonItem) {
+    // @IBAction func createReminder(button: UIBarButtonItem) {
+    func createReminder(reminderTitle: String, reminderDate: NSDate) {
         let reminder = EKReminder(eventStore: eventStore)
         reminder.calendar = eventStore.defaultCalendarForNewReminders()
-        reminder.title = homeworkNameTextField.text!
-        let alarm = EKAlarm(absoluteDate: reminderDateDatePicker.date)
+        reminder.title = reminderTitle
+        let alarm = EKAlarm(absoluteDate: reminderDate as Date)
         reminder.addAlarm(alarm)
+        
       //  if let latText = latTextField.text, let lonText = lonTextField.text, let lat = Double(latText), let lon = Double(lonText) {
         //    let locAlarm = EKAlarm()
           //  let ekLoc = EKStructuredLocation(title: "Home")
@@ -122,6 +125,7 @@ class DetailViewController: UIViewController {
        // }
         do {
             try eventStore.save(reminder, commit: true)
+            print("reminder item created")
         } catch let error {
             print("Error: \(error.localizedDescription)")
         }
@@ -173,6 +177,8 @@ class DetailViewController: UIViewController {
         if let homework = currentHomework {
             display(homework: homework)
         }
+        checkEKAuthorizationStatus(type: .event)
+        checkEKAuthorizationStatus(type: .reminder)
     }
 
     override func didReceiveMemoryWarning() {

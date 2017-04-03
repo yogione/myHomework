@@ -170,7 +170,13 @@ class DetailViewController: UIViewController {
         }
     }
 
-
+    //MARK: - Text Delegate Methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         managedContext = appDelegate.persistentContainer.viewContext

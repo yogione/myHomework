@@ -30,18 +30,20 @@ class DetailViewController: UIViewController {
     func display(homework: Homework){
         homeworkNameTextField.text = homework.homeWorkName
         hwdescTextField.text = homework.hwdesc
-        
-    
+        dueDateDatePicker.date = homework.dueDate as! Date
+        reminderDateDatePicker.date = homework.reminderDate as! Date
+        completionStatusTextField.text = homework.completionStatus
     }
+    
     func setHomeworkValues(homework: Homework) {
         homework.homeWorkName = homeworkNameTextField.text
         homework.hwdesc = hwdescTextField.text
         homework.dueDate = dueDateDatePicker.date as NSDate?
         homework.reminderDate = reminderDateDatePicker.date as NSDate?
         homework.completionStatus = completionStatusTextField.text
-        print("in sethomework values fn: \(homework.homeWorkName)")
-
-       
+      //  print("in sethomework values fn: \(homework.homeWorkName)")
+        
+        createCalendarItem(calTitle: hwdescTextField.text!, startDate: dueDateDatePicker.date as NSDate, endDate: dueDateDatePicker.date as NSDate)
     }
     
     func createHomework() {
@@ -70,14 +72,18 @@ class DetailViewController: UIViewController {
     
     //MARK: - Calendar Methods
     
-    @IBAction func createCalendarItem(button: UIBarButtonItem) {
+  //  @IBAction func createCalendarItem(button: UIBarButtonItem) {
+    func createCalendarItem(calTitle: String, startDate: NSDate, endDate: NSDate) {
+
         let calEvent = EKEvent(eventStore: eventStore)
         calEvent.calendar = eventStore.defaultCalendarForNewEvents
-        calEvent.title = homeworkNameTextField.text!
-        calEvent.startDate = dueDateDatePicker.date
-        calEvent.endDate = dueDateDatePicker.date
+        calEvent.title = calTitle
+        calEvent.startDate = startDate as Date
+        calEvent.endDate = endDate as Date
+
         do {
             try eventStore.save(calEvent, span: .thisEvent, commit: true)
+             print("calendar item created")
         } catch let error {
             print("Error: \(error.localizedDescription)")
         }
@@ -121,7 +127,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBAction func findReminders(button: UIBarButtonItem) {
+  /*  @IBAction func findReminders(button: UIBarButtonItem) {
         let reminderLists = eventStore.calendars(for: .reminder)
         let predicate = eventStore.predicateForReminders(in: reminderLists)
         eventStore.fetchReminders(matching: predicate) { (reminders) in
@@ -133,7 +139,8 @@ class DetailViewController: UIViewController {
                 print("No Reminders")
             }
         }
-    }
+    } */
+    
     //MARK: - Permission Methods
     
     func requestAccessToEKType(type: EKEntityType) {

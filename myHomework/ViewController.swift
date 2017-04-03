@@ -67,14 +67,12 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? HomeworksTableViewCell
     // let currentContact = contactArray[indexPath.row]
     let currentHomework = homeworkArray[indexPath.row]
-    print("\(currentHomework)")
-
-  //  cell.textLabel!.text = currentContact.lastName! + ", " + currentContact.firstName!
-   // cell.detailTextLabel!.text = currentContact.phoneNumber!
+    // print("\(currentHomework)")
+  
     cell?.homeworkNameLabel.text = currentHomework.homeWorkName
     cell?.hwdescLabel.text = currentHomework.hwdesc
-    cell?.dueDateLable.text = "\(currentHomework.dueDate)"
-    cell?.reminderDateLable.text = "\(currentHomework.reminderDate)"
+    cell?.dueDateLable.text = "\(currentHomework.dueDate!)"
+    cell?.reminderDateLable.text = "\(currentHomework.reminderDate!)"
     cell?.completionStatusLabel.text = currentHomework.completionStatus
     
     return cell!

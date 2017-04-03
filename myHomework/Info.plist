@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>we need calendar perms for this app. thanks.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>we need reminders permissions for this app. thanks.</string>
 </dict>
 </plist>

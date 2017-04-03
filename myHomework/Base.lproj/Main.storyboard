@@ -106,12 +106,15 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="mwm-5R-eYJ">
                                 <connections>
-                                    <segue destination="iD1-0a-vux" kind="showDetail" identifier="segueToAddNewHomeWork" id="1Ne-Y4-cfh"/>
+                                    <segue destination="iD1-0a-vux" kind="show" id="kza-bG-yom"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Fetch" id="hrE-dF-qc3"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="homeworkTableView" destination="ZX5-qC-fzq" id="vNg-S2-fmX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -248,6 +251,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Ne-Y4-cfh"/>
+        <segue reference="XBi-9U-ogM"/>
     </inferredMetricsTieBreakers>
 </document>

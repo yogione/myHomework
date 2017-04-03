@@ -23,16 +23,24 @@ class DetailViewController: UIViewController {
      let eventStore = EKEventStore()
     
     var managedContext  :NSManagedObjectContext!
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     //MARK:- CORE DATA METHODS
+    
+    func display(homework: Homework){
+        homeworkNameTextField.text = homework.homeWorkName
+        hwdescTextField.text = homework.hwdesc
+        
+    
+    }
     func setHomeworkValues(homework: Homework) {
         homework.homeWorkName = homeworkNameTextField.text
         homework.hwdesc = hwdescTextField.text
         homework.dueDate = dueDateDatePicker.date as NSDate?
         homework.reminderDate = reminderDateDatePicker.date as NSDate?
         homework.completionStatus = completionStatusTextField.text
+        print("in sethomework values fn: \(homework.homeWorkName)")
+
        
     }
     
@@ -51,12 +59,13 @@ class DetailViewController: UIViewController {
     //MARK: - Interactivity Methods
     
     @IBAction func savedPressed(button: UIButton) {
+        
         if let homework = currentHomework {
             editHomework(homework: homework)
         } else {
             createHomework()
         }
-       // self.navigationController!.popViewController(animated: true)
+  //      self.navigationController!.popViewController(animated: true)
     }
     
     //MARK: - Calendar Methods
@@ -154,8 +163,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         managedContext = appDelegate.persistentContainer.viewContext
-
-            }
+        if let homework = currentHomework {
+            display(homework: homework)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

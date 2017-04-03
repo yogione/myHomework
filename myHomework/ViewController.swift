@@ -18,13 +18,12 @@ class ViewController: UIViewController {
    // var homeworks: [NSManagedObject] = []
     var homeworkArray = [Homework]()
 
-    @IBOutlet var homeworkTableView :UITableView!
-    
+    @IBOutlet var homeworkTableView :UITableView!    
     
     //MARK: - Interavtivity Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueEditTask" {
+        if segue.identifier == "segueToEditSelectedHW" {
             let indexPath = homeworkTableView.indexPathForSelectedRow!
             let currentHomework = homeworkArray[indexPath.row]
             let destVC = segue.destination as! DetailViewController
@@ -41,12 +40,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         managedContext = appDelegate.persistentContainer.viewContext
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        homeworkArray = appDelegate.fetchAllHomeWorks()
+        print("Count \(homeworkArray.count)")
+        homeworkTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
@@ -60,14 +64,20 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 }
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? HomeworksTableViewCell
     // let currentContact = contactArray[indexPath.row]
     let currentHomework = homeworkArray[indexPath.row]
     print("\(currentHomework)")
 
   //  cell.textLabel!.text = currentContact.lastName! + ", " + currentContact.firstName!
    // cell.detailTextLabel!.text = currentContact.phoneNumber!
-    return cell
+    cell?.homeworkNameLabel.text = currentHomework.homeWorkName
+    cell?.hwdescLabel.text = currentHomework.hwdesc
+    cell?.dueDateLable.text = "\(currentHomework.dueDate)"
+    cell?.reminderDateLable.text = "\(currentHomework.reminderDate)"
+    cell?.completionStatusLabel.text = currentHomework.completionStatus
+    
+    return cell!
 }
 
 func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

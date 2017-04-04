@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import EventKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var homeworkNameTextField :UITextField!
     @IBOutlet var hwdescTextField       :UITextField!
